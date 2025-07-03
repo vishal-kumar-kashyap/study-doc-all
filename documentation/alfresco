@@ -1,0 +1,15 @@
+alfresco DB port: 5433
+chnage port in alfresco:
+1) Change Tomcat Port: within alfresco/tomcat/config/server.xml
+2)<Alfresco Home>/tomcat/shared/classes/alfresco/web-extension/share-config-custom.xml and replace all the mentions of port 8080 to 1234.
+
+
+Step 1: Adjust Portal Properties
+session.store.password=true
+company.security.auth.type=screenName
+
+Step 2: Synchronize the User Accounts
+
+Step 3: Add the Repository to Documents and Media
+
+atompub url:  Alfresco 5.1 CMIS 1.1: http://[host]:[port]/alfresco/api/-default-/public/cmis/versions/1.1/atom

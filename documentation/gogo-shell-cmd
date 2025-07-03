@@ -1,0 +1,52 @@
+lb
+
+lb | grep student
+
+bundle 1076
+
+headers 1076
+
+install "file:C://Liferay/Liferay7.2/student-web/target/student-web-1.0.0.jar"
+
+start 1076
+
+stop 1076
+
+uninstall 1076
+
+inspect requirement service 1076
+
+inspect capability service 1076
+
+diag 1076
+
+upgrade:check
+system:check
+history
+help
+
+services
+
+services | grep student
+
+ds:unsatisfied
+
+ds:unsatisfied 1075
+
+scr:info 4884
+
+scr:list
+
+scr:list | grep student
+
+dm
+
+dm | grep student
+
+dm cp
+
+dm nd
+
+dm na
+
+dm wtf

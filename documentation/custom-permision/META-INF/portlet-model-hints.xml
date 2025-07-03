@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.adjecti.pis.model.BulkOnbordingFile">
+		<field name="uuid" type="String" />
+		<field name="bulkOnbordingFileId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="fileEntryId" type="Long" />
+		<field name="fileName" type="String" />
+		<field name="remarks" type="String" />
+		<field name="title" type="String" />
+		<field name="totalRecords" type="Long" />
+		<field name="unitId" type="Long" />
+	</model>
+	<model name="com.adjecti.pis.model.RegistrationRequest">
+		<field name="uuid" type="String" />
+		<field name="registrationRequestId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="recordNo" type="long" />
+		<field name="unitId" type="long" />
+		<field name="unit" type="String" />
+		<field name="personalNo" type="long" />
+		<field name="firstName" type="String" />
+		<field name="middleName" type="String" />
+		<field name="lastName" type="String" />
+		<field name="genderId" type="long" />
+		<field name="gender" type="String" />
+		<field name="designationId" type="long" />
+		<field name="designation" type="String" />
+		<field name="designationCode" type="String" />
+		<field name="tradeId" type="long" />
+		<field name="trade" type="String" />
+		<field name="tradeCode" type="String" />
+		<field name="gradeId" type="long" />
+		<field name="grade" type="String" />
+		<field name="gradeCode" type="String" />
+		<field name="dateOfBirth" type="Date" />
+		<field name="dateOfJoiningOrganization" type="Date" />
+		<field name="casteCategoryId" type="long" />
+		<field name="casteCategory" type="String" />
+		<field name="mobile" type="long" />
+		<field name="emailAddress" type="String" />
+		<field name="dateOfJoiningUnit" type="Date" />
+		<field name="gpfnpsType" type="String" />
+		<field name="gpfnpsNumber" type="long" />
+		<field name="sectionId" type="long" />
+		<field name="section" type="String" />
+		<field name="sectionCode" type="String" />
+		<field name="loginId" type="String" />
+		<field name="idamUser" type="boolean" />
+		<field name="emailAccess" type="boolean" />
+		<field name="digitalSigning" type="boolean" />
+		<field name="eGovAccess" type="boolean" />
+		<field name="pisAccess" type="boolean" />
+		<field name="state" type="String" />
+		<field name="idamUserCreated" type="boolean" />
+		<field name="employeeCreated" type="boolean" />
+		<field name="appUserCreated" type="boolean" />
+		<field name="postBox" type="String" />
+		<field name="rank" type="long" />
+		<field name="errorMessage" type="String">
+			<hint name="max-length">4000</hint>
+		</field>
+		<field name="bulkOnbordingFileId" type="long" />
+	</model>
+</model-hints>

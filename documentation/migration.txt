@@ -1,0 +1,40 @@
+Pre Migration:- 
+1)delete all user,page,media,web content that is not in use
+## cleanup the resource permission(in server administration)
+
+## take DB backup,media folder, take code backup
+
+
+######DB Migration steps:
+1)Verify mySql connector jar
+2)create a new DB
+3)disable indexer: create file com.liferay.portal.search.configuration.IndexStatusManagerConfiguration.config inside the /osgi/config
+indexReadOnly=true
+
+4)disable auto upgrade: create file com.liferay.portal.upgrade.internal.configuration.RealeaseManagerConfiguration.config inside /osgi/config/
+autoUpgrade=false
+
+5)Configure upgrade tool: witin /tool/
+	a)app-server.properties (uncomment your server file, )
+	b)portal-upgrade-database.properties (provide db connection properties)
+	c)portal-upgrade-ext.properties 
+
+6) check build number from release_ table
+7)run db_upgrade.bat
+
+8) enable indexer
+indexReadOnly=false
+
+9)change portal-ext.properties
+10)start the server
+
+######source code upgradation
+1 option)
+create new workspace, in IDE click on project->new upgrade plan
+select current and target version
+execute all display task
+
+if requird then update liferay version in grade file
+
+2) option
+create a module and copy paste the files

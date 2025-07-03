@@ -1,0 +1,30 @@
+1) dpenedency-injector="spring" in service-bulider tag in xml file
+	data-source="secondDatabase" for each entity
+
+2)add dependency  compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender.api", version: "4.0.0"
+3) in port-ext.prop
+	jdbc.ext.driverClassName=com.mysql.jdbc.Driver
+	jdbc.ext.username=root 
+	jdbc.ext.password=root	 
+	jdbc.ext.url=jdbc:mysql://localhost/datasourcetesting
+	
+4)Create a ext-spring.xml file inside the sprint folder and paste
+	<?xml version="1.0"?>
+	<beans
+       default-destroy-method="destroy"
+       default-init-method="afterPropertiesSet"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       <bean  class="com.liferay.portal.dao.jdbc.spring.DataSourceFactoryBean" id="liferayDataSourceFactory" >
+              <property name="propertyPrefix" value="jdbc.ext." />
+       </bean>
+       <bean class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy" id="liferayDataSource" >
+              <property name="targetDataSource" ref="liferayDataSourceFactory" />
+       </bean>
+       <alias alias="secondDatabase" name="liferayDataSource" />   
+	</beans>
+	
+	where secondDatabase will be used in service.xml
+	
+5) comment @component annotation of class serviceImpl(if face can not assign component to aop)

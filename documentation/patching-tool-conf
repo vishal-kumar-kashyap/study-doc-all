@@ -1,0 +1,19 @@
+
+###########################################################
+1) goto patching tool directory
+patching-tool info :  This would give you patching tool version, installed paches  etc
+
+2)patching-tool auto-discovery:  This command try to discover the liferay tomcat automatically
+3) Run the setup command:
+patching-tool setup :  
+
+Install Liferay fix packs
+4) copy fix pack to patches directory
+5)Stop the Liferay server
+6)Run the below command: patching-tool install 
+
+https://www.javasavvy.com/liferay-patching-tool/
+
+fix pack download
+
+https://customer.liferay.com/en/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=120352759&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=120352767

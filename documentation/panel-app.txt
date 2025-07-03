@@ -1,0 +1,7 @@
+
+#create panel app
+#by default category name is module name
+#--  create class for  category in another module
+#and provide that category in *panel-app-category of your module
+
+#change name in language.properties

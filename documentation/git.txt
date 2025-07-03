@@ -1,0 +1,14 @@
+
+git branch ------for branch list
+git checkout filename------(for revert file)
+git checkout <existing_branch>
+git checkout -b <new_branch>
+
+
+#########  for upload exist project to github ###################
+1-- Create Repository and copy URL
+2-- open cmd in project folder and execute "  git init"
+3-  git add .
+4--  git commit -m "first commit"
+5--  git remote add (paste repository url)
+6-- git push -u origin master

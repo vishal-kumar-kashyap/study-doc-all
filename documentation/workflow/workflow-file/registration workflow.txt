@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+
+<workflow-definition
+	xmlns="urn:liferay.com:liferay-workflow_7.3.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:liferay.com:liferay-workflow_7.3.0 http://www.liferay.com/dtd/liferay-workflow-definition_7_3_0.xsd"
+>
+	<version>1</version>
+	<condition>
+		<name>Verify Admin</name>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						247.98001098632812,
+						138.69599151611328
+					]
+				}
+			]]>
+		</metadata>
+		<script>
+			<![CDATA[
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.service.RoleServiceUtil;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.kernel.util.GetterUtil;
+
+long companyId = GetterUtil.getLong((String) workflowContext.get(WorkflowConstants.CONTEXT_COMPANY_ID));
+long groupId = GetterUtil.getLong((String) workflowContext.get(WorkflowConstants.CONTEXT_GROUP_ID));
+				
+
+String userId = (String)workflowContext.get(WorkflowConstants.CONTEXT_USER_ID);
+
+returnValue = "Review";
+
+if(RoleServiceUtil.hasUserRole(Long.valueOf(userId),companyId, "PIS ADMIN", true)){
+	returnValue = "Assign to admin";
+}
+]]>
+		</script>
+		<script-language>groovy</script-language>
+		<transitions>
+			<transition>
+				<name>Review</name>
+				<target>Review</target>
+				<default>true</default>
+			</transition>
+			<transition>
+				<name>Assign to admin</name>
+				<target>Confirm</target>
+				<default>false</default>
+			</transition>
+		</transitions>
+	</condition>
+	<state>
+		<name>StartNode</name>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						83.00399780273438,
+						94.99199676513672
+					]
+				}
+			]]>
+		</metadata>
+		<initial>true</initial>
+		<transitions>
+			<transition>
+				<name>Created</name>
+				<target>Verify Admin</target>
+				<default>true</default>
+			</transition>
+		</transitions>
+	</state>
+	<state>
+		<name>EndNode</name>
+		<metadata>
+			<![CDATA[
+				{
+					"terminal": true,
+					"xy": [
+						710.8559265136719,
+						333.0119857788086
+					]
+				}
+			]]>
+		</metadata>
+		<actions>
+			<action>
+				<name>Approve</name>
+				<description>Approve</description>
+				<script>
+					<![CDATA[com.liferay.portal.kernel.workflow.WorkflowStatusManagerUtil.updateStatus(com.liferay.portal.kernel.workflow.WorkflowConstants.getLabelStatus("approved"), workflowContext);]]>
+				</script>
+				<script-language>groovy</script-language>
+				<execution-type>onEntry</execution-type>
+			</action>
+		</actions>
+	</state>
+	<task>
+		<name>Confirm</name>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						245.9639892578125,
+						322.6479721069336
+					]
+				}
+			]]>
+		</metadata>
+		<assignments>
+			<user />
+		</assignments>
+		<transitions>
+			<transition>
+				<name>Approved</name>
+				<target>EndNode</target>
+				<default>true</default>
+			</transition>
+		</transitions>
+	</task>
+	<task>
+		<name>Review</name>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						458.0279846191406,
+						133.00798797607422
+					]
+				}
+			]]>
+		</metadata>
+		<assignments>
+			<user />
+		</assignments>
+		<transitions>
+			<transition>
+				<name>Submit</name>
+				<target>Approve</target>
+				<default>true</default>
+			</transition>
+		</transitions>
+	</task>
+	<task>
+		<name>Approve</name>
+		<metadata>
+			<![CDATA[
+				{
+					"xy": [
+						682.8840026855469,
+						145.0199966430664
+					]
+				}
+			]]>
+		</metadata>
+		<assignments>
+			<roles>
+				<role><role-id>38602</role-id></role>
+			</roles>
+		</assignments>
+		<transitions>
+			<transition>
+				<name>Reject</name>
+				<target>Review</target>
+				<default>true</default>
+			</transition>
+			<transition>
+				<name>Approved</name>
+				<target>EndNode</target>
+				<default>false</default>
+			</transition>
+		</transitions>
+	</task>
+</workflow-definition>

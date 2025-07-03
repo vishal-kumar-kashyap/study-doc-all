@@ -1,0 +1,11 @@
+By default listener ia available only for user and layout
+ex-- (in Afl-model-listener)
+
+1--Create model listener with specific class by extending BaseModelListener class
+2-- and write property in portal-ext.propertiies
+
+
+pop.server.notifications.enabled=true
+pop.server.notifications.interval=1
+com.liferay.portal.servlet.filters.audit.AuditFilter=true
+value.object.listener.com.liferay.document.library.kernel.model.DLFileEntry(liferay class name)=com.afl.model.listener.DLFileEntryModelListener(your class name)

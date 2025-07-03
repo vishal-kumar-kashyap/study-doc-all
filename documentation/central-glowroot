@@ -1,0 +1,7 @@
+install Cassandra
+start Cassandra 
+download central-collactor https://tracker.iplocation.net/jltg/
+run centarl glowroot run java -jar glowroot-central.jar
+create glowroot.properties  parrlel with glowroot.jar
+	collector.address=central-collector-server:4000
+	multi.dir=true

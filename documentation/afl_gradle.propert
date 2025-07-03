@@ -1,0 +1,12 @@
+##
+## Check GETTING_STARTED.markdown for additional properties and their default
+## values.
+##
+
+liferay.workspace.modules.dir = modules
+microsoft.translator.subscription.key = 
+liferay.workspace.product = dxp-7.3-sp1
+target.platform.index.sources = false
+liferay.workspace.home.dir=E:/liferay-client/dev_1/liferay-dxp-7.3.10.1-sp1
+org.gradle.daemon=true
+org.gradle.jvmargs=-Xmx5120m

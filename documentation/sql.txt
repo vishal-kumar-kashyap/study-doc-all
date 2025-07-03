@@ -1,0 +1,25 @@
+
+#ls                 --- for list
+#cd ..               -- for back
+#cd /foldername    --- for specific folder
+#rm -r ./*          -- delete non empty folder and subfiles
+#rmdir               -- delete empty folder
+
+#tail -f catlina.out  -- for display log 
+#in  binfolder ./startup.sh     ---  for tomcat start
+
+#telnet connect 11311  ---- for gogo shell
+#ps -ef|grep tomcat   -----  for tomcat status
+
+
+ #### login with root user
+ 
+ 1. login with root user
+sudo su -
+
+2.   Command to open a port
+sudo ufw allow port/tcp
+ex. sudo ufw allow 4200/tcp
+
+3. Show all opened ports
+ufw status

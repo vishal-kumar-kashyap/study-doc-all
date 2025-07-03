@@ -1,0 +1,6 @@
+https://liferay.dev/blogs/-/blogs/building-headless-apis
+
+
+After implementing the business logic for each service, deploy your modules. Your APIs are then available at this URL:
+
+http://[host]:[port]/o/[APPLICATION_CLASSNAME]/[OPEN_API_VERSION]/

@@ -1,0 +1,10 @@
+git clone -b post_uat https://github.com/creanttechnologies-com/NPS.git
+git pull origin post_uat
+
+git clone -b post_uat https://npst2023@github.com/creanttechnologies-com/NPS.git
+
+add "signed" in Audit
+Appointment1->>> IAR in word
+Appointment2->> annexes to IAR 
+Appointment3->>>> other
+Extracts of board minutes approving IAR->>>> Signed Extracts of board minutes approving IAR
