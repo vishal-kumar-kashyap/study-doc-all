@@ -1,0 +1,37 @@
+1) install jdk 
+	sudo yum install java-1.8.0-openjdk-devel
+	
+2) download jenkins: 
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo yum install jenkins-2.346.3
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
+sudo firewall-cmd --reload
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+3)change port for jenkins in redhat
+sudo vi /etc/sysconfig/jenkins
+JENKINS_PORT="8080"
+
+sudo vi /etc/default/jenkins
+HTTP_PORT=8080
+
+3)
+after changing the port, run below command:
+	/usr/bin/java -Djava.awt.headless=true -jar /usr/share/java/jenkins.war --webroot=/var/cache/jenkins/war --httpPort=9090
+	
+4) install git
+		sudo yum install git
+
+
+password: your passowrd
+
+
+USERNAME/password:  admin/admin
+
+
+admin@npsttrust.com
