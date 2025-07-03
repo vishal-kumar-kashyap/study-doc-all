@@ -1,0 +1,59 @@
+cd $WORKSPACE
+mkdir -p $WORKSPACE/npst-code; cd $WORKSPACE/npst-code
+
+##git clone https://npst2023:Kumar3021@@github.com/npst2023/npst.git -b main
+rm -rf $WORKSPACE/npst-code/*
+git clone https://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@github.com/npst2023/npst.git
+
+cd $WORKSPACE/npst-code/npst
+chmod 777 $WORKSPACE/npst-code/npst/gradlew
+./gradlew clean build --stacktrace
+
+################ for remote server#################
+
+find $WORKSPACE/npst-code/npst -type f -name "*.jar" | grep build/libs | xargs -I{} scp {} user@10.20.20.2:/opt/apps/liferay-dxp-7.3.10.3-sp3/deploy/
+
+
+##################################################################
+
+
+# JAVA Version
+ 
+java -version
+ 
+# Code Merge
+ 
+#cd $WORKSPACE
+#mkdir -p $WORKSPACE/Test-fingate-code; cd $WORKSPACE/Test-fingate-code
+#git clone http://$FINGATE_CODE_USR:$FINGATE_CODE_PASS@172.16.33.29/FINGate/fg_portal/fingate_liferay.git -b Test-Fingate-code
+ 
+ 
+## FINGATE code fetch and build
+ 
+cd $WORKSPACE
+mkdir -p $WORKSPACE/fingate-code; cd $WORKSPACE/fingate-code
+git clone http://$FINGATE_CODE_USR:$FINGATE_CODE_PASS@172.16.33.29/FINGate/fg_portal/fingate_liferay.git -b Dev-Fingate-code
+cd $WORKSPACE/fingate-code/fingate_liferay
+chmod 775 $WORKSPACE/fingate-code/fingate_liferay/gradlew
+./gradlew clean build --stacktrace
+ 
+#find $WORKSPACE/test-fingate-code/fingate_liferay -type f -name *.jar | grep build/libs
+ 
+# FINGATE WAR
+ 
+
+#mkdir -p $WORKSPACE/fingate-code/theme
+#cd $WORKSPACE/fingate-code/theme
+#git clone http://$FINGATE_CODE_USR:$FINGATE_CODE_PASS@172.16.33.29/FINGate/fg_portal/fingate_liferay.git -b theme
+#cd $WORKSPACE/fingate-code/theme/fingate_liferay/classic-replica-theme
+#chmod 775 $WORKSPACE/fingate-code/theme/fingate_liferay/classic-replica-theme/build.gradle
+#cd $WORKSPACE/fingate-code/theme/fingate_liferay/classic-replica-theme
+ 
+
+#cd $WORKSPACE/fingate-code/fingate_liferay
+#mkdir -p $WORKSPACE/fingate-code/fingate_liferay/wars
+#cd $WORKSPACE/fingate-code/fingate_liferay/wars
+ 
+#cp -r $WORKSPACE/fingate-code/theme/fingate_liferay/classic-replica-theme $WORKSPACE/fingate-code/fingate_liferay/wars
+#cd $WORKSPACE/fingate-code/fingate_liferay
+#./gradlew clean build
