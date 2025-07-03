@@ -1,0 +1,33 @@
+#######NPST DEV####################
+cd $WORKSPACE
+mkdir -p $WORKSPACE/npst-dev; cd $WORKSPACE/npst-dev
+
+rm -rf $WORKSPACE/npst-dev/*
+git clone https://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@github.com/npst-dcms/npst-dcms-dev.git
+
+cd $WORKSPACE/npst-dev/npst-dcms-dev
+chmod 777 $WORKSPACE/npst-dev/npst-dcms-dev/gradlew
+./gradlew clean build --stacktrace
+
+find $WORKSPACE/npst-dev/npst-dcms-dev -type f -name "*.jar" -o -name "*.war" | grep build/libs | xargs -I{} scp {} root@10.20.20.2:/opt/apps/liferay-dxp-7.3.10.3-sp3/deploy/
+
+
+#######NPST Prod####################
+
+cd $WORKSPACE
+mkdir -p $WORKSPACE/npst-prod; cd $WORKSPACE/npst-prod
+
+rm -rf $WORKSPACE/npst-prod/*
+git clone https://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@github.com/npst-dcms/npst_dcms_prod.git
+
+cd $WORKSPACE/npst-prod/npst-dcms-prod
+chmod 777 $WORKSPACE/npst-prod/npst-dcms-prod/gradlew
+./gradlew clean build --stacktrace
+
+
+find $WORKSPACE/npst-prod/npst-dcms-prod -type f -name "*.jar" -o -name "*.war" | grep build/libs | xargs -I{} scp {} root@30.20.20.6: /opt/apps/liferay-dxp-7.3.10.3-sp3/deploy/
+
+find $WORKSPACE/npst-prod/npst-dcms-prod -type f -name "*.jar" -o -name "*.war" | grep build/libs | xargs -I{} scp {} root@30.20.20.7: /opt/apps/liferay-dxp-7.3.10.3-sp3/deploy/
+
+
+
